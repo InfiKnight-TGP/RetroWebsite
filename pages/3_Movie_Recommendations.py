@@ -13,8 +13,8 @@ st.set_page_config(
 )
 
 # API Keys
-OMDB_API_KEY = "19aa3d79"
-TMDB_API_KEY = "e74025f9071018056fe2bbc55deb5dcd"
+TMDB_API_KEY=st.secrets["tmdb_api_key"]
+TMDB_ACCESS_TOKEN=st.secrets["tmdb_access_token"]
 
 # TMDB Base URLs
 TMDB_BASE_URL = "https://api.themoviedb.org/3"
