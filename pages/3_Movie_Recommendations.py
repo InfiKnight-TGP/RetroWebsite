@@ -373,7 +373,7 @@ def display_movie_card(movie, omdb_details):
         with col1:
             if movie.get('poster_path'):
                 poster_url = f"https://image.tmdb.org/t/p/w500{movie['poster_path']}"
-                st.image(poster_url, use_column_width=True)
+                st.image(poster_url, use_container_width=True)
             else:
                 st.write("No poster available")
         
