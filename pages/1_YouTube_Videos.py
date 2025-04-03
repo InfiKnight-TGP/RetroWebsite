@@ -20,7 +20,7 @@ LANGUAGE_CODES = {
 }
 
 # YouTube API setup
-YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
+YOUTUBE_API_KEY = st.secrets["youtube_api_key"]
 if not YOUTUBE_API_KEY:
     st.error("YouTube API key not found. Please check your .env file.")
     st.stop()
