@@ -22,12 +22,4 @@ toolbarMode = "minimal"
 hideTopBar = false
 hideSidebarNavigation = false 
 
-# YouTube API Key
-YOUTUBE_API_KEY=st.secrets["youtube_api_key"]
 
-# TMDB API Key
-TMDB_API_KEY=st.secrets["tmdb_api_key"]
-TMDB_ACCESS_TOKEN=st.secrets["tmdb_access_token"]
-
-# OMDB API Key
-OMDB_API_KEY=st.secrets["omdb_api_key"]
