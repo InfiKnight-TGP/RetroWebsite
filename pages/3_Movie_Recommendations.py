@@ -13,6 +13,7 @@ st.set_page_config(
 )
 
 # API Keys
+OMDB_API_KEY=st.secrets["omdb_api_key"]
 TMDB_API_KEY=st.secrets["tmdb_api_key"]
 TMDB_ACCESS_TOKEN=st.secrets["tmdb_access_token"]
 
