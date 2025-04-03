@@ -1,4 +1,4 @@
-# Mood-Based Multi-Platform Entertainment Recommender
+# R.E.T.R.O - Entertainment Recommender
 
 A personalized content recommendation system that suggests entertainment options based on users' emotional state, age, and language preferences. The system currently focuses on YouTube content, movies, and music with plans for expansion to other platforms.
 
