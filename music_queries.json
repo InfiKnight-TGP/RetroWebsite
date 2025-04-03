@@ -1,0 +1,940 @@
+{
+  "Happy": {
+    "kids": {
+      "English": [
+        "best happy English songs for kids playlist",
+        "top cheerful English nursery rhymes",
+        "fun English dance songs for children",
+        "most joyful English animated theme songs",
+        "upbeat English sing-along songs for kids"
+      ],
+      "Hindi": [
+        "best happy songs for kids playlist in Hindi",
+        "top cheerful Hindi nursery rhymes",
+        "fun Hindi dance songs for children",
+        "most joyful Hindi animated theme songs",
+        "upbeat Hindi sing-along songs for kids"
+      ],
+      "Tamil": [
+        "best happy songs for kids playlist in Tamil",
+        "top cheerful Tamil nursery rhymes",
+        "fun Tamil dance songs for children",
+        "most joyful Tamil animated theme songs",
+        "upbeat Tamil sing-along songs for kids"
+      ],
+      "Telugu": [
+        "best happy songs for kids playlist in Telugu",
+        "top cheerful Telugu nursery rhymes",
+        "fun Telugu dance songs for children",
+        "most joyful Telugu animated theme songs",
+        "upbeat Telugu sing-along songs for kids"
+      ],
+      "Kannada": [
+        "best happy songs for kids playlist in Kannada",
+        "top cheerful Kannada nursery rhymes",
+        "fun Kannada dance songs for children",
+        "most joyful Kannada animated theme songs",
+        "upbeat Kannada sing-along songs for kids"
+      ],
+      "Malayalam": [
+        "best happy songs for kids playlist in Malayalam",
+        "top cheerful Malayalam nursery rhymes",
+        "fun Malayalam dance songs for children",
+        "most joyful Malayalam animated theme songs",
+        "upbeat Malayalam sing-along songs for kids"
+      ]
+    },
+    "teens": {
+      "English": [
+        "best feel-good English songs playlist",
+        "top trending English happy songs",
+        "most uplifting English songs for a good mood",
+        "best English summer hits of all time",
+        "classic English songs that make you happy"
+      ],
+      "Hindi": [
+        "best feel-good Hindi songs playlist",
+        "top trending Hindi happy songs",
+        "most uplifting Hindi songs for a good mood",
+        "best Hindi summer hits of all time",
+        "classic Hindi songs that make you happy"
+      ],
+      "Tamil": [
+        "best feel-good Tamil songs playlist",
+        "top trending Tamil happy songs",
+        "most uplifting Tamil songs for a good mood",
+        "best Tamil summer hits of all time",
+        "classic Tamil songs that make you happy"
+      ],
+      "Telugu": [
+        "best feel-good Telugu songs playlist",
+        "top trending Telugu happy songs",
+        "most uplifting Telugu songs for a good mood",
+        "best Telugu summer hits of all time",
+        "classic Telugu songs that make you happy"
+      ],
+      "Kannada": [
+        "best feel-good Kannada songs playlist",
+        "top trending Kannada happy songs",
+        "most uplifting Kannada songs for a good mood",
+        "best Kannada summer hits of all time",
+        "classic Kannada songs that make you happy"
+      ],
+      "Malayalam": [
+        "best feel-good Malayalam songs playlist",
+        "top trending Malayalam happy songs",
+        "most uplifting Malayalam songs for a good mood",
+        "best Malayalam summer hits of all time",
+        "classic Malayalam songs that make you happy"
+      ]
+    },
+    "adults": {
+      "English": [
+        "top uplifting English songs of all time",
+        "best classic English pop hits feel-good",
+        "greatest English dance songs ever",
+        "top happy mood English jazz playlist",
+        "most energizing English songs for happiness"
+      ],
+      "Hindi": [
+        "top uplifting Hindi songs of all time",
+        "best classic Hindi pop hits feel-good",
+        "greatest Hindi dance songs ever",
+        "top happy mood Hindi jazz playlist",
+        "most energizing Hindi songs for happiness"
+      ],
+      "Tamil": [
+        "top uplifting Tamil songs of all time",
+        "best classic Tamil pop hits feel-good",
+        "greatest Tamil dance songs ever",
+        "top happy mood Tamil jazz playlist",
+        "most energizing Tamil songs for happiness"
+      ],
+      "Telugu": [
+        "top uplifting Telugu songs of all time",
+        "best classic Telugu pop hits feel-good",
+        "greatest Telugu dance songs ever",
+        "top happy mood Telugu jazz playlist",
+        "most energizing Telugu songs for happiness"
+      ],
+      "Kannada": [
+        "top uplifting Kannada songs of all time",
+        "best classic Kannada pop hits feel-good",
+        "greatest Kannada dance songs ever",
+        "top happy mood Kannada jazz playlist",
+        "most energizing Kannada songs for happiness"
+      ],
+      "Malayalam": [
+        "top uplifting Malayalam songs of all time",
+        "best classic Malayalam pop hits feel-good",
+        "greatest Malayalam dance songs ever",
+        "top happy mood Malayalam jazz playlist",
+        "most energizing Malayalam songs for happiness"
+      ]
+    }
+  },
+  "Sad": {
+    "kids": {
+      "English": [
+        "soft English lullaby songs for kids",
+        "gentle English bedtime songs for children",
+        "soothing English songs for sleep",
+        "calm and emotional English animated songs",
+        "relaxing English piano songs for kids"
+      ],
+      "Hindi": [
+        "soft Hindi lullaby songs for kids",
+        "gentle Hindi bedtime songs for children",
+        "soothing Hindi songs for sleep",
+        "calm and emotional Hindi animated songs",
+        "relaxing Hindi piano songs for kids"
+      ],
+      "Tamil": [
+        "soft Tamil lullaby songs for kids",
+        "gentle Tamil bedtime songs for children",
+        "soothing Tamil songs for sleep",
+        "calm and emotional Tamil animated songs",
+        "relaxing Tamil piano songs for kids"
+      ],
+      "Telugu": [
+        "soft Telugu lullaby songs for kids",
+        "gentle Telugu bedtime songs for children",
+        "soothing Telugu songs for sleep",
+        "calm and emotional Telugu animated songs",
+        "relaxing Telugu piano songs for kids"
+      ],
+      "Kannada": [
+        "soft Kannada lullaby songs for kids",
+        "gentle Kannada bedtime songs for children",
+        "soothing Kannada songs for sleep",
+        "calm and emotional Kannada animated songs",
+        "relaxing Kannada piano songs for kids"
+      ],
+      "Malayalam": [
+        "soft Malayalam lullaby songs for kids",
+        "gentle Malayalam bedtime songs for children",
+        "soothing Malayalam songs for sleep",
+        "calm and emotional Malayalam animated songs",
+        "relaxing Malayalam piano songs for kids"
+      ]
+    },
+    "teens": {
+      "English": [
+        "most emotional English songs playlist",
+        "deep meaningful English indie songs",
+        "saddest English theme songs ever",
+        "heartbreaking English ballads",
+        "top English acoustic heartbreak songs"
+      ],
+      "Hindi": [
+        "most emotional Hindi songs playlist",
+        "deep meaningful Hindi indie songs",
+        "saddest Hindi theme songs ever",
+        "heartbreaking Hindi ballads",
+        "top Hindi acoustic heartbreak songs"
+      ],
+      "Tamil": [
+        "most emotional Tamil songs playlist",
+        "deep meaningful Tamil indie songs",
+        "saddest Tamil theme songs ever",
+        "heartbreaking Tamil ballads",
+        "top Tamil acoustic heartbreak songs"
+      ],
+      "Telugu": [
+        "most emotional Telugu songs playlist",
+        "deep meaningful Telugu indie songs",
+        "saddest Telugu theme songs ever",
+        "heartbreaking Telugu ballads",
+        "top Telugu acoustic heartbreak songs"
+      ],
+      "Kannada": [
+        "most emotional Kannada songs playlist",
+        "deep meaningful Kannada indie songs",
+        "saddest Kannada theme songs ever",
+        "heartbreaking Kannada ballads",
+        "top Kannada acoustic heartbreak songs"
+      ],
+      "Malayalam": [
+        "most emotional Malayalam songs playlist",
+        "deep meaningful Malayalam indie songs",
+        "saddest Malayalam theme songs ever",
+        "heartbreaking Malayalam ballads",
+        "top Malayalam acoustic heartbreak songs"
+      ]
+    },
+    "adults": {
+      "English": [
+        "greatest emotional English songs of all time",
+        "top nostalgic English heartbreak songs",
+        "best sad English old songs playlist",
+        "most touching English songs ever",
+        "greatest English breakup songs"
+      ],
+      "Hindi": [
+        "greatest emotional Hindi songs of all time",
+        "top nostalgic Hindi heartbreak songs",
+        "best sad Hindi old songs playlist",
+        "most touching Hindi songs ever",
+        "greatest Hindi breakup songs"
+      ],
+      "Tamil": [
+        "greatest emotional Tamil songs of all time",
+        "top nostalgic Tamil heartbreak songs",
+        "best sad Tamil old songs playlist",
+        "most touching Tamil songs ever",
+        "greatest Tamil breakup songs"
+      ],
+      "Telugu": [
+        "greatest emotional Telugu songs of all time",
+        "top nostalgic Telugu heartbreak songs",
+        "best sad Telugu old songs playlist",
+        "most touching Telugu songs ever",
+        "greatest Telugu breakup songs"
+      ],
+      "Kannada": [
+        "greatest emotional Kannada songs of all time",
+        "top nostalgic Kannada heartbreak songs",
+        "best sad Kannada old songs playlist",
+        "most touching Kannada songs ever",
+        "greatest Kannada breakup songs"
+      ],
+      "Malayalam": [
+        "greatest emotional Malayalam songs of all time",
+        "top nostalgic Malayalam heartbreak songs",
+        "best sad Malayalam old songs playlist",
+        "most touching Malayalam songs ever",
+        "greatest Malayalam breakup songs"
+      ]
+    }
+  },
+  "Energetic": {
+    "kids": {
+      "English": [
+        "high-energy English workout songs for kids",
+        "top English action theme songs",
+        "fun English dance and movement songs for children",
+        "best English adventure soundtracks",
+        "most exciting English kids songs"
+      ],
+      "Hindi": [
+        "high-energy Hindi workout songs for kids",
+        "top Hindi action theme songs",
+        "fun Hindi dance and movement songs for children",
+        "best Hindi adventure soundtracks",
+        "most exciting Hindi kids songs"
+      ],
+      "Tamil": [
+        "high-energy Tamil workout songs for kids",
+        "top Tamil action theme songs",
+        "fun Tamil dance and movement songs for children",
+        "best Tamil adventure soundtracks",
+        "most exciting Tamil kids songs"
+      ],
+      "Telugu": [
+        "high-energy Telugu workout songs for kids",
+        "top Telugu action theme songs",
+        "fun Telugu dance and movement songs for children",
+        "best Telugu adventure soundtracks",
+        "most exciting Telugu kids songs"
+      ],
+      "Kannada": [
+        "high-energy Kannada workout songs for kids",
+        "top Kannada action theme songs",
+        "fun Kannada dance and movement songs for children",
+        "best Kannada adventure soundtracks",
+        "most exciting Kannada kids songs"
+      ],
+      "Malayalam": [
+        "high-energy Malayalam workout songs for kids",
+        "top Malayalam action theme songs",
+        "fun Malayalam dance and movement songs for children",
+        "best Malayalam adventure soundtracks",
+        "most exciting Malayalam kids songs"
+      ]
+    },
+    "teens": {
+      "English": [
+        "best English pump-up workout songs",
+        "high-energy English dance playlist",
+        "best English songs for motivation",
+        "top powerful English rock songs",
+        "best English workout music"
+      ],
+      "Hindi": [
+        "best Hindi pump-up workout songs",
+        "high-energy Hindi dance playlist",
+        "best Hindi songs for motivation",
+        "top powerful Hindi rock songs",
+        "best Hindi workout music"
+      ],
+      "Tamil": [
+        "best Tamil pump-up workout songs",
+        "high-energy Tamil dance playlist",
+        "best Tamil songs for motivation",
+        "top powerful Tamil rock songs",
+        "best Tamil workout music"
+      ],
+      "Telugu": [
+        "best Telugu pump-up workout songs",
+        "high-energy Telugu dance playlist",
+        "best Telugu songs for motivation",
+        "top powerful Telugu rock songs",
+        "best Telugu workout music"
+      ],
+      "Kannada": [
+        "best Kannada pump-up workout songs",
+        "high-energy Kannada dance playlist",
+        "best Kannada songs for motivation",
+        "top powerful Kannada rock songs",
+        "best Kannada workout music"
+      ],
+      "Malayalam": [
+        "best Malayalam pump-up workout songs",
+        "high-energy Malayalam dance playlist",
+        "best Malayalam songs for motivation",
+        "top powerful Malayalam rock songs",
+        "best Malayalam workout music"
+      ]
+    },
+    "adults": {
+      "English": [
+        "best English adrenaline-boosting songs",
+        "greatest English rock anthems ever",
+        "top English party hits all time",
+        "best English pump-up songs for energy",
+        "most electrifying English music playlist"
+      ],
+      "Hindi": [
+        "best Hindi adrenaline-boosting songs",
+        "greatest Hindi rock anthems ever",
+        "top Hindi party hits all time",
+        "best Hindi pump-up songs for energy",
+        "most electrifying Hindi music playlist"
+      ],
+      "Tamil": [
+        "best Tamil adrenaline-boosting songs",
+        "greatest Tamil rock anthems ever",
+        "top Tamil party hits all time",
+        "best Tamil pump-up songs for energy",
+        "most electrifying Tamil music playlist"
+      ],
+      "Telugu": [
+        "best Telugu adrenaline-boosting songs",
+        "greatest Telugu rock anthems ever",
+        "top Telugu party hits all time",
+        "best Telugu pump-up songs for energy",
+        "most electrifying Telugu music playlist"
+      ],
+      "Kannada": [
+        "best Kannada adrenaline-boosting songs",
+        "greatest Kannada rock anthems ever",
+        "top Kannada party hits all time",
+        "best Kannada pump-up songs for energy",
+        "most electrifying Kannada music playlist"
+      ],
+      "Malayalam": [
+        "best Malayalam adrenaline-boosting songs",
+        "greatest Malayalam rock anthems ever",
+        "top Malayalam party hits all time",
+        "best Malayalam pump-up songs for energy",
+        "most electrifying Malayalam music playlist"
+      ]
+    }
+  },
+  "Relaxed": {
+    "kids": {
+      "English": [
+        "soft English instrumental lullabies for kids",
+        "best English relaxing songs for children",
+        "gentle English acoustic songs for relaxation",
+        "calm English bedtime melodies",
+        "soothing English piano music for peace"
+      ],
+      "Hindi": [
+        "soft Hindi instrumental lullabies for kids",
+        "best Hindi relaxing songs for children",
+        "gentle Hindi acoustic songs for relaxation",
+        "calm Hindi bedtime melodies",
+        "soothing Hindi piano music for peace"
+      ],
+      "Tamil": [
+        "soft Tamil instrumental lullabies for kids",
+        "best Tamil relaxing songs for children",
+        "gentle Tamil acoustic songs for relaxation",
+        "calm Tamil bedtime melodies",
+        "soothing Tamil piano music for peace"
+      ],
+      "Telugu": [
+        "soft Telugu instrumental lullabies for kids",
+        "best Telugu relaxing songs for children",
+        "gentle Telugu acoustic songs for relaxation",
+        "calm Telugu bedtime melodies",
+        "soothing Telugu piano music for peace"
+      ],
+      "Kannada": [
+        "soft Kannada instrumental lullabies for kids",
+        "best Kannada relaxing songs for children",
+        "gentle Kannada acoustic songs for relaxation",
+        "calm Kannada bedtime melodies",
+        "soothing Kannada piano music for peace"
+      ],
+      "Malayalam": [
+        "soft Malayalam instrumental lullabies for kids",
+        "best Malayalam relaxing songs for children",
+        "gentle Malayalam acoustic songs for relaxation",
+        "calm Malayalam bedtime melodies",
+        "soothing Malayalam piano music for peace"
+      ]
+    },
+    "teens": {
+      "English": [
+        "best English lo-fi chill beats playlist",
+        "top English acoustic songs for relaxation",
+        "soft English indie folk playlist",
+        "best English slow songs to relax",
+        "mellow English music for study"
+      ],
+      "Hindi": [
+        "best Hindi lo-fi chill beats playlist",
+        "top Hindi acoustic songs for relaxation",
+        "soft Hindi indie folk playlist",
+        "best Hindi slow songs to relax",
+        "mellow Hindi music for study"
+      ],
+      "Tamil": [
+        "best Tamil lo-fi chill beats playlist",
+        "top Tamil acoustic songs for relaxation",
+        "soft Tamil indie folk playlist",
+        "best Tamil slow songs to relax",
+        "mellow Tamil music for study"
+      ],
+      "Telugu": [
+        "best Telugu lo-fi chill beats playlist",
+        "top Telugu acoustic songs for relaxation",
+        "soft Telugu indie folk playlist",
+        "best Telugu slow songs to relax",
+        "mellow Telugu music for study"
+      ],
+      "Kannada": [
+        "best Kannada lo-fi chill beats playlist",
+        "top Kannada acoustic songs for relaxation",
+        "soft Kannada indie folk playlist",
+        "best Kannada slow songs to relax",
+        "mellow Kannada music for study"
+      ],
+      "Malayalam": [
+        "best Malayalam lo-fi chill beats playlist",
+        "top Malayalam acoustic songs for relaxation",
+        "soft Malayalam indie folk playlist",
+        "best Malayalam slow songs to relax",
+        "mellow Malayalam music for study"
+      ]
+    },
+    "adults": {
+      "English": [
+        "best English smooth jazz instrumental",
+        "top English relaxing classical music",
+        "best English acoustic coffeehouse songs",
+        "chill English lounge music playlist",
+        "best English soft rock songs for peace"
+      ],
+      "Hindi": [
+        "best Hindi smooth jazz instrumental",
+        "top Hindi relaxing classical music",
+        "best Hindi acoustic coffeehouse songs",
+        "chill Hindi lounge music playlist",
+        "best Hindi soft rock songs for peace"
+      ],
+      "Tamil": [
+        "best Tamil smooth jazz instrumental",
+        "top Tamil relaxing classical music",
+        "best Tamil acoustic coffeehouse songs",
+        "chill Tamil lounge music playlist",
+        "best Tamil soft rock songs for peace"
+      ],
+      "Telugu": [
+        "best Telugu smooth jazz instrumental",
+        "top Telugu relaxing classical music",
+        "best Telugu acoustic coffeehouse songs",
+        "chill Telugu lounge music playlist",
+        "best Telugu soft rock songs for peace"
+      ],
+      "Kannada": [
+        "best Kannada smooth jazz instrumental",
+        "top Kannada relaxing classical music",
+        "best Kannada acoustic coffeehouse songs",
+        "chill Kannada lounge music playlist",
+        "best Kannada soft rock songs for peace"
+      ],
+      "Malayalam": [
+        "best Malayalam smooth jazz instrumental",
+        "top Malayalam relaxing classical music",
+        "best Malayalam acoustic coffeehouse songs",
+        "chill Malayalam lounge music playlist",
+        "best Malayalam soft rock songs for peace"
+      ]
+    }
+  },
+  "Stressed": {
+    "kids": {
+      "English": [
+        "calming English nature sounds for kids sleep",
+        "best English soft piano music for relaxation",
+        "gentle English lullabies for stress relief",
+        "top English peaceful songs for children",
+        "soft English background music for studying"
+      ],
+      "Hindi": [
+        "calming Hindi nature sounds for kids sleep",
+        "best Hindi soft piano music for relaxation",
+        "gentle Hindi lullabies for stress relief",
+        "top Hindi peaceful songs for children",
+        "soft Hindi background music for studying"
+      ],
+      "Tamil": [
+        "calming Tamil nature sounds for kids sleep",
+        "best Tamil soft piano music for relaxation",
+        "gentle Tamil lullabies for stress relief",
+        "top Tamil peaceful songs for children",
+        "soft Tamil background music for studying"
+      ],
+      "Telugu": [
+        "calming Telugu nature sounds for kids sleep",
+        "best Telugu soft piano music for relaxation",
+        "gentle Telugu lullabies for stress relief",
+        "top Telugu peaceful songs for children",
+        "soft Telugu background music for studying"
+      ],
+      "Kannada": [
+        "calming Kannada nature sounds for kids sleep",
+        "best Kannada soft piano music for relaxation",
+        "gentle Kannada lullabies for stress relief",
+        "top Kannada peaceful songs for children",
+        "soft Kannada background music for studying"
+      ],
+      "Malayalam": [
+        "calming Malayalam nature sounds for kids sleep",
+        "best Malayalam soft piano music for relaxation",
+        "gentle Malayalam lullabies for stress relief",
+        "top Malayalam peaceful songs for children",
+        "soft Malayalam background music for studying"
+      ]
+    },
+    "teens": {
+      "English": [
+        "most calming English lo-fi songs for stress",
+        "top English soothing songs playlist",
+        "best English chill songs for relaxation",
+        "deep English relaxation instrumental music",
+        "top English meditation and sleep music"
+      ],
+      "Hindi": [
+        "most calming Hindi lo-fi songs for stress",
+        "top Hindi soothing songs playlist",
+        "best Hindi chill songs for relaxation",
+        "deep Hindi relaxation instrumental music",
+        "top Hindi meditation and sleep music"
+      ],
+      "Tamil": [
+        "most calming Tamil lo-fi songs for stress",
+        "top Tamil soothing songs playlist",
+        "best Tamil chill songs for relaxation",
+        "deep Tamil relaxation instrumental music",
+        "top Tamil meditation and sleep music"
+      ],
+      "Telugu": [
+        "most calming Telugu lo-fi songs for stress",
+        "top Telugu soothing songs playlist",
+        "best Telugu chill songs for relaxation",
+        "deep Telugu relaxation instrumental music",
+        "top Telugu meditation and sleep music"
+      ],
+      "Kannada": [
+        "most calming Kannada lo-fi songs for stress",
+        "top Kannada soothing songs playlist",
+        "best Kannada chill songs for relaxation",
+        "deep Kannada relaxation instrumental music",
+        "top Kannada meditation and sleep music"
+      ],
+      "Malayalam": [
+        "most calming Malayalam lo-fi songs for stress",
+        "top Malayalam soothing songs playlist",
+        "best Malayalam chill songs for relaxation",
+        "deep Malayalam relaxation instrumental music",
+        "top Malayalam meditation and sleep music"
+      ]
+    },
+    "adults": {
+      "English": [
+        "most relaxing English classical pieces",
+        "best English ASMR music for deep sleep",
+        "top English spa and zen relaxation music",
+        "greatest English slow jazz songs for peace",
+        "soothing English instrumental playlist"
+      ],
+      "Hindi": [
+        "most relaxing Hindi classical pieces",
+        "best Hindi ASMR music for deep sleep",
+        "top Hindi spa and zen relaxation music",
+        "greatest Hindi slow jazz songs for peace",
+        "soothing Hindi instrumental playlist"
+      ],
+      "Tamil": [
+        "most relaxing Tamil classical pieces",
+        "best Tamil ASMR music for deep sleep",
+        "top Tamil spa and zen relaxation music",
+        "greatest Tamil slow jazz songs for peace",
+        "soothing Tamil instrumental playlist"
+      ],
+      "Telugu": [
+        "most relaxing Telugu classical pieces",
+        "best Telugu ASMR music for deep sleep",
+        "top Telugu spa and zen relaxation music",
+        "greatest Telugu slow jazz songs for peace",
+        "soothing Telugu instrumental playlist"
+      ],
+      "Kannada": [
+        "most relaxing Kannada classical pieces",
+        "best Kannada ASMR music for deep sleep",
+        "top Kannada spa and zen relaxation music",
+        "greatest Kannada slow jazz songs for peace",
+        "soothing Kannada instrumental playlist"
+      ],
+      "Malayalam": [
+        "most relaxing Malayalam classical pieces",
+        "best Malayalam ASMR music for deep sleep",
+        "top Malayalam spa and zen relaxation music",
+        "greatest Malayalam slow jazz songs for peace",
+        "soothing Malayalam instrumental playlist"
+      ]
+    }
+  },
+  "Bored": {
+    "kids": {
+      "English": [
+        "most fun English interactive songs for kids",
+        "top English educational songs for children",
+        "best English funny theme songs",
+        "exciting English sing-along songs",
+        "catchy English kids pop songs"
+      ],
+      "Hindi": [
+        "most fun Hindi interactive songs for kids",
+        "top Hindi educational songs for children",
+        "best Hindi funny theme songs",
+        "exciting Hindi sing-along songs",
+        "catchy Hindi kids pop songs"
+      ],
+      "Tamil": [
+        "most fun Tamil interactive songs for kids",
+        "top Tamil educational songs for children",
+        "best Tamil funny theme songs",
+        "exciting Tamil sing-along songs",
+        "catchy Tamil kids pop songs"
+      ],
+      "Telugu": [
+        "most fun Telugu interactive songs for kids",
+        "top Telugu educational songs for children",
+        "best Telugu funny theme songs",
+        "exciting Telugu sing-along songs",
+        "catchy Telugu kids pop songs"
+      ],
+      "Kannada": [
+        "most fun Kannada interactive songs for kids",
+        "top Kannada educational songs for children",
+        "best Kannada funny theme songs",
+        "exciting Kannada sing-along songs",
+        "catchy Kannada kids pop songs"
+      ],
+      "Malayalam": [
+        "most fun Malayalam interactive songs for kids",
+        "top Malayalam educational songs for children",
+        "best Malayalam funny theme songs",
+        "exciting Malayalam sing-along songs",
+        "catchy Malayalam kids pop songs"
+      ]
+    },
+    "teens": {
+      "English": [
+        "top English engaging mashup songs",
+        "most unexpected English indie songs",
+        "best English playlist for road trips",
+        "random English viral music hits",
+        "most unique English experimental music"
+      ],
+      "Hindi": [
+        "top Hindi engaging mashup songs",
+        "most unexpected Hindi indie songs",
+        "best Hindi playlist for road trips",
+        "random Hindi viral music hits",
+        "most unique Hindi experimental music"
+      ],
+      "Tamil": [
+        "top Tamil engaging mashup songs",
+        "most unexpected Tamil indie songs",
+        "best Tamil playlist for road trips",
+        "random Tamil viral music hits",
+        "most unique Tamil experimental music"
+      ],
+      "Telugu": [
+        "top Telugu engaging mashup songs",
+        "most unexpected Telugu indie songs",
+        "best Telugu playlist for road trips",
+        "random Telugu viral music hits",
+        "most unique Telugu experimental music"
+      ],
+      "Kannada": [
+        "top Kannada engaging mashup songs",
+        "most unexpected Kannada indie songs",
+        "best Kannada playlist for road trips",
+        "random Kannada viral music hits",
+        "most unique Kannada experimental music"
+      ],
+      "Malayalam": [
+        "top Malayalam engaging mashup songs",
+        "most unexpected Malayalam indie songs",
+        "best Malayalam playlist for road trips",
+        "random Malayalam viral music hits",
+        "most unique Malayalam experimental music"
+      ]
+    },
+    "adults": {
+      "English": [
+        "best English throwback hits you forgot",
+        "most creative English jazz and funk songs",
+        "greatest English rock songs with weird lyrics",
+        "top English underrated songs ever",
+        "best English road trip music playlist"
+      ],
+      "Hindi": [
+        "best Hindi throwback hits you forgot",
+        "most creative Hindi jazz and funk songs",
+        "greatest Hindi rock songs with weird lyrics",
+        "top Hindi underrated songs ever",
+        "best Hindi road trip music playlist"
+      ],
+      "Tamil": [
+        "best Tamil throwback hits you forgot",
+        "most creative Tamil jazz and funk songs",
+        "greatest Tamil rock songs with weird lyrics",
+        "top Tamil underrated songs ever",
+        "best Tamil road trip music playlist"
+      ],
+      "Telugu": [
+        "best Telugu throwback hits you forgot",
+        "most creative Telugu jazz and funk songs",
+        "greatest Telugu rock songs with weird lyrics",
+        "top Telugu underrated songs ever",
+        "best Telugu road trip music playlist"
+      ],
+      "Kannada": [
+        "best Kannada throwback hits you forgot",
+        "most creative Kannada jazz and funk songs",
+        "greatest Kannada rock songs with weird lyrics",
+        "top Kannada underrated songs ever",
+        "best Kannada road trip music playlist"
+      ],
+      "Malayalam": [
+        "best Malayalam throwback hits you forgot",
+        "most creative Malayalam jazz and funk songs",
+        "greatest Malayalam rock songs with weird lyrics",
+        "top Malayalam underrated songs ever",
+        "best Malayalam road trip music playlist"
+      ]
+    }
+  },
+  "Adventurous": {
+    "kids": {
+      "English": [
+        "best English adventure-themed songs for kids",
+        "top English jungle and pirate soundtracks",
+        "exciting English travel songs for children",
+        "best English heroic theme songs",
+        "greatest English space and sci-fi music for children"
+      ],
+      "Hindi": [
+        "best Hindi adventure-themed songs for kids",
+        "top Hindi jungle and pirate soundtracks",
+        "exciting Hindi travel songs for children",
+        "best Hindi heroic theme songs",
+        "greatest Hindi space and sci-fi music for children"
+      ],
+      "Tamil": [
+        "best Tamil adventure-themed songs for kids",
+        "top Tamil jungle and pirate soundtracks",
+        "exciting Tamil travel songs for children",
+        "best Tamil heroic theme songs",
+        "greatest Tamil space and sci-fi music for children"
+      ],
+      "Telugu": [
+        "best Telugu adventure-themed songs for kids",
+        "top Telugu jungle and pirate soundtracks",
+        "exciting Telugu travel songs for children",
+        "best Telugu heroic theme songs",
+        "greatest Telugu space and sci-fi music for children"
+      ],
+      "Kannada": [
+        "best Kannada adventure-themed songs for kids",
+        "top Kannada jungle and pirate soundtracks",
+        "exciting Kannada travel songs for children",
+        "best Kannada heroic theme songs",
+        "greatest Kannada space and sci-fi music for children"
+      ],
+      "Malayalam": [
+        "best Malayalam adventure-themed songs for kids",
+        "top Malayalam jungle and pirate soundtracks",
+        "exciting Malayalam travel songs for children",
+        "best Malayalam heroic theme songs",
+        "greatest Malayalam space and sci-fi music for children"
+      ]
+    },
+    "teens": {
+      "English": [
+        "most thrilling English adventure songs",
+        "best English road trip playlist ever",
+        "top English cinematic action soundtracks",
+        "greatest English travel songs",
+        "epic English songs for exploring"
+      ],
+      "Hindi": [
+        "most thrilling Hindi adventure songs",
+        "best Hindi road trip playlist ever",
+        "top Hindi cinematic action soundtracks",
+        "greatest Hindi travel songs",
+        "epic Hindi songs for exploring"
+      ],
+      "Tamil": [
+        "most thrilling Tamil adventure songs",
+        "best Tamil road trip playlist ever",
+        "top Tamil cinematic action soundtracks",
+        "greatest Tamil travel songs",
+        "epic Tamil songs for exploring"
+      ],
+      "Telugu": [
+        "most thrilling Telugu adventure songs",
+        "best Telugu road trip playlist ever",
+        "top Telugu cinematic action soundtracks",
+        "greatest Telugu travel songs",
+        "epic Telugu songs for exploring"
+      ],
+      "Kannada": [
+        "most thrilling Kannada adventure songs",
+        "best Kannada road trip playlist ever",
+        "top Kannada cinematic action soundtracks",
+        "greatest Kannada travel songs",
+        "epic Kannada songs for exploring"
+      ],
+      "Malayalam": [
+        "most thrilling Malayalam adventure songs",
+        "best Malayalam road trip playlist ever",
+        "top Malayalam cinematic action soundtracks",
+        "greatest Malayalam travel songs",
+        "epic Malayalam songs for exploring"
+      ]
+    },
+    "adults": {
+      "English": [
+        "best English travel and road trip songs",
+        "top English classic adventure soundtracks",
+        "most epic English orchestral compositions",
+        "greatest English motivational songs",
+        "best English music for long journeys"
+      ],
+      "Hindi": [
+        "best Hindi travel and road trip songs",
+        "top Hindi classic adventure soundtracks",
+        "most epic Hindi orchestral compositions",
+        "greatest Hindi motivational songs",
+        "best Hindi music for long journeys"
+      ],
+      "Tamil": [
+        "best Tamil travel and road trip songs",
+        "top Tamil classic adventure soundtracks",
+        "most epic Tamil orchestral compositions",
+        "greatest Tamil motivational songs",
+        "best Tamil music for long journeys"
+      ],
+      "Telugu": [
+        "best Telugu travel and road trip songs",
+        "top Telugu classic adventure soundtracks",
+        "most epic Telugu orchestral compositions",
+        "greatest Telugu motivational songs",
+        "best Telugu music for long journeys"
+      ],
+      "Kannada": [
+        "best Kannada travel and road trip songs",
+        "top Kannada classic adventure soundtracks",
+        "most epic Kannada orchestral compositions",
+        "greatest Kannada motivational songs",
+        "best Kannada music for long journeys"
+      ],
+      "Malayalam": [
+        "best Malayalam travel and road trip songs",
+        "top Malayalam classic adventure soundtracks",
+        "most epic Malayalam orchestral compositions",
+        "greatest Malayalam motivational songs",
+        "best Malayalam music for long journeys"
+      ]
+    }
+  }
+} 

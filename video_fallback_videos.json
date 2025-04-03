@@ -1,0 +1,37 @@
+{
+  "Happy": {
+    "kids": "XqZsoesa55w",
+    "teens": "_OBlgSz8sSM",
+    "adults": "dMH0bHeiRNg"
+  },
+  "Sad": {
+    "kids": "3iDxU9eNQ_0",
+    "teens": "4A6Bu96ALOw",
+    "adults": "RgKAFK5djSk"
+  },
+  "Energetic": {
+    "kids": "olLDrvc1cb0",
+    "teens": "G1IbRujko-A",
+    "adults": "F4XUZOuMhBE"
+  },
+  "Relaxed": {
+    "kids": "yCjJyiqpAuU",
+    "teens": "UfcAVejslrU",
+    "adults": "UfcAVejslrU"
+  },
+  "Stressed": {
+    "kids": "hlWiI4xVXKY",
+    "teens": "pXRviuL6vMY",
+    "adults": "UfcAVejslrU"
+  },
+  "Bored": {
+    "kids": "olLDrvc1cb0",
+    "teens": "G1IbRujko-A",
+    "adults": "F4XUZOuMhBE"
+  },
+  "Adventurous": {
+    "kids": "Z3mZ17Unp9E",
+    "teens": "2KpWj77wRfI",
+    "adults": "urRVZ4SW7WU"
+  }
+} 

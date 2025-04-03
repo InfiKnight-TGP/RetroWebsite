@@ -1,0 +1,171 @@
+{
+  "Happy": {
+    "kids": [
+      "best cartoon shows for kids",
+      "funniest animal videos for kids",
+      "interactive storytelling for children",
+      "funny animated movies for kids full",
+      "exciting science experiments for kids",
+      "best adventure stories for children"
+    ],
+    "teens": [
+      "best comedy movies for teens full",
+      "hilarious YouTube vines and skits",
+      "viral funny moments compilation 2025",
+      "funniest YouTube gaming moments",
+      "best lighthearted anime series",
+      "most exciting travel vlogs",
+      "top-rated comedy TV series"
+    ],
+    "adults": [
+      "top stand-up comedy specials full",
+      "best feel-good movies to watch",
+      "comedy movie scenes funniest",
+      "top-rated uplifting movies",
+      "hilarious prank videos compilation",
+      "most inspiring success stories",
+      "funniest hidden camera pranks"
+    ]
+  },
+  "Sad": {
+    "kids": [
+      "gentle bedtime stories for kids",
+      "kids storybooks with emotional messages",
+      "best animated sad movie moments",
+      "peaceful guided meditation for children",
+      "stories that teach kindness and empathy"
+    ],
+    "teens": [
+      "most heartbreaking anime scenes",
+      "saddest movie moments ever",
+      "best storytelling sad animations",
+      "deeply emotional real-life stories"
+    ],
+    "adults": [
+      "classic heartbreak movies full",
+      "best nostalgic emotional movie scenes",
+      "best thought-provoking indie films",
+      "true stories of perseverance and resilience"
+    ]
+  },
+  "Energetic": {
+    "kids": [
+      "funny action-packed cartoon scenes",
+      "best interactive kids dance videos",
+      "best superhero cartoons for kids",
+      "exciting racing and adventure shows"
+    ],
+    "teens": [
+      "epic gaming videos compilation",
+      "sports highlight videos intense moments",
+      "adrenaline-pumping extreme sports",
+      "most exciting parkour and stunt videos"
+    ],
+    "adults": [
+      "action movie chase sequences",
+      "high-intensity sports highlights",
+      "most thrilling adventure challenges",
+      "top-rated motivational success stories"
+    ]
+  },
+  "Relaxed": {
+    "kids": [
+      "relaxing animated bedtime stories",
+      "best peaceful kids storytelling",
+      "gentle yoga and stretching for children"
+    ],
+    "teens": [
+      "guided meditation for stress relief",
+      "top-rated mindfulness exercises for focus"
+    ],
+    "adults": [
+      "top ASMR relaxation sounds",
+      "deep sleep meditation guided",
+      "most peaceful scenic travel documentaries"
+    ]
+  },
+  "Stressed": {
+    "kids": [
+      "guided breathing exercises for children",
+      "animated yoga and meditation for kids",
+      "calming bedtime stories",
+      "best comforting animated movies"
+    ],
+    "teens": [
+      "ASMR stress relief sounds",
+      "guided stress meditation for teens",
+      "positive affirmations for stress relief",
+      "deep breathing exercises for anxiety",
+      "motivational self-improvement talks"
+    ],
+    "adults": [
+      "guided meditation for stress relief",
+      "best mindfulness exercises",
+      "yoga and stretching relaxation",
+      "most effective productivity techniques"
+    ]
+  },
+  "Bored": {
+    "kids": [
+      "fun DIY crafts for kids",
+      "best educational videos for children",
+      "funny challenge videos for kids",
+      "top kids science experiments",
+      "entertaining puppet shows online",
+      "best adventure cartoons for kids",
+      "most fun and interactive quiz games"
+    ],
+    "teens": [
+      "viral challenge videos 2025",
+      "best interactive mystery games",
+      "funniest reaction videos compilation",
+      "top YouTube pranks and fails",
+      "entertaining escape room challenges",
+      "best short web series for teens",
+      "unexpected plot twist movies",
+      "best unsolved mystery cases"
+    ],
+    "adults": [
+      "mind-blowing documentaries full",
+      "best mystery and thriller movies",
+      "top thought-provoking podcasts",
+      "funniest improv comedy sketches",
+      "best travel vlogs around the world",
+      "hidden gem TV series recommendations",
+      "unexpected movie endings",
+      "most fascinating historical events"
+    ]
+  },
+  "Adventurous": {
+    "kids": [
+      "best adventure movies for kids",
+      "top jungle and safari animations",
+      "exciting pirate and treasure hunt cartoons",
+      "best superhero cartoons for kids",
+      "interactive outdoor adventure ideas",
+      "fun science exploration shows",
+      "amazing nature documentaries for children",
+      "most exciting dinosaur adventure stories"
+    ],
+    "teens": [
+      "most thrilling adventure movies",
+      "top adrenaline-pumping sports moments",
+      "best survival reality shows",
+      "epic road trip and travel vlogs",
+      "extreme parkour and stunts compilation",
+      "amazing space exploration videos",
+      "scariest ghost hunting experiences",
+      "most mind-blowing conspiracy theories"
+    ],
+    "adults": [
+      "best outdoor survival documentaries",
+      "most dangerous hikes and expeditions",
+      "top-rated adventure movies of all time",
+      "amazing deep-sea diving footage",
+      "thrilling jungle survival stories",
+      "most scenic road trip routes",
+      "extreme sports and skydiving highlights",
+      "true stories of daring explorers"
+    ]
+  }
+}
