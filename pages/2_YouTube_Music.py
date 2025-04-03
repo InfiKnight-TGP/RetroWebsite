@@ -21,6 +21,7 @@ LANGUAGE_CODES = {
 
 # YouTube API setup
 OMDB_API_KEY=st.secrets["omdb_api_key"]
+YOUTUBE_API_KEY = st.secrets["youtube_api_key"]
 youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
 
 # Load music search queries and fallback videos from JSON
