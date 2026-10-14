@@ -36,6 +36,12 @@ const GENRES: Record<number, string> = {
   16: 'Animation'
 };
 
+const TV_GENRES: Record<number, string> = {
+  10759: 'Action & Adventure', 35: 'Comedy', 80: 'Crime', 18: 'Drama', 10751: 'Family',
+  10762: 'Kids', 9648: 'Mystery', 10765: 'Sci-Fi & Fantasy', 99: 'Documentary',
+  10764: 'Reality', 16: 'Animation'
+};
+
 // ============================================================================
 // RANDOMNESS & SHUFFLE HELPERS
 // ============================================================================
@@ -60,6 +66,7 @@ function parseExcludeIds(input: any): Set<string> {
 // In-memory pagination caches to support random page hopping
 const movieTotalPagesCache = new Map<string, number>();
 const animeLastPageCache = new Map<string, number>();
+let tvProvidersCache: { expiresAt: number; providers: any[] } | null = null;
 
 // Safely load JSON files
 function loadJsonFile<T>(filename: string, defaultVal: T): T {
@@ -118,7 +125,15 @@ app.post('/api/youtube', async (req: Request, res: Response) => {
 
   const isMusic = type === 'music';
   const fallbackMap = isMusic ? MUSIC_FALLBACKS : VIDEO_FALLBACKS;
-  const fallbackId = fallbackMap?.[mood]?.[ageGroup] || 'dQw4w9WgXcQ';
+  const preferredFallbackId = fallbackMap?.[mood]?.[ageGroup] || 'dQw4w9WgXcQ';
+  const unseenFallbackIds = Object.values(fallbackMap || {})
+    .flatMap((byAge: any) => Object.values(byAge || {}))
+    .map(String)
+    .filter((id) => !excludeIds.has(id));
+  const fallbackId = excludeIds.has(String(preferredFallbackId))
+    ? unseenFallbackIds[Math.floor(Math.random() * unseenFallbackIds.length)]
+    : preferredFallbackId;
+  if (!fallbackId) return res.status(404).json({ error: 'No unseen fallback videos available' });
 
   // Determine available queries
   let queries: string[] = [];
@@ -130,7 +145,7 @@ app.post('/api/youtube', async (req: Request, res: Response) => {
   }
 
   if (!queries.length) {
-    return res.json({ id: fallbackId, topic: '', iterations: 0, source: 'fallback' });
+    return res.json({ id: fallbackId, title: 'Recommended Video', channel: '', topic: '', iterations: 0, source: 'fallback' });
   }
 
   // Topic selection & iteration
@@ -150,7 +165,7 @@ app.post('/api/youtube', async (req: Request, res: Response) => {
   }
 
   if (!apiKey || apiKey === 'your_youtube_api_key_here') {
-    return res.json({ id: fallbackId, topic, iterations: iter, source: 'fallback_no_key' });
+    return res.json({ id: fallbackId, title: 'Recommended Video', channel: '', topic, iterations: iter, source: 'fallback_no_key' });
   }
 
   try {
@@ -213,7 +228,8 @@ app.post('/api/youtube', async (req: Request, res: Response) => {
       // Shuffle the items, drop excluded IDs, and return the first one
       const shuffled = shuffle(data.items);
       const nonExcluded = shuffled.filter((item: any) => !excludeIds.has(String(item.id?.videoId)));
-      const picked: any = nonExcluded.length > 0 ? nonExcluded[0] : shuffled[0];
+      const picked: any = nonExcluded[0];
+      if (!picked) return res.status(404).json({ error: 'No unseen YouTube results available' });
 
       return res.json({
         id: picked.id.videoId,
@@ -225,9 +241,9 @@ app.post('/api/youtube', async (req: Request, res: Response) => {
       });
     }
 
-    return res.json({ id: fallbackId, topic, iterations: iter, source: 'fallback' });
+    return res.json({ id: fallbackId, title: 'Recommended Video', channel: '', topic, iterations: iter, source: 'fallback' });
   } catch (err) {
-    return res.json({ id: fallbackId, topic, iterations: iter, source: 'fallback' });
+    return res.json({ id: fallbackId, title: 'Recommended Video', channel: '', topic, iterations: iter, source: 'fallback' });
   }
 });
 
@@ -238,6 +254,7 @@ app.get('/api/movies', async (req: Request, res: Response) => {
   const genreId = String(req.query.genreId || '28');
   const age = Number(req.query.age || 18);
   const language = String(req.query.language || 'English');
+  const requestedPage = Math.max(1, Number.parseInt(String(req.query.page || '1'), 10) || 1);
   const excludeIds = parseExcludeIds(req.query.excludeIds || req.body?.excludeIds);
 
   const tmdbBearer = process.env.TMDB_BEARER_TOKEN;
@@ -263,17 +280,9 @@ app.get('/api/movies', async (req: Request, res: Response) => {
     decadeStart = decades[Math.floor(Math.random() * decades.length)];
   }
 
-  // Pick a random page in 1..min(total_pages, 20). Cache total_pages per filter combo in memory;
-  // the first request uses page 1 to learn it.
+  // Respect the client batch page so previous/next batch controls are predictable.
   const filterKey = `${genreId}:${age}:${language}${decadeStart ? `:${decadeStart}` : ''}`;
-  let selectedPage = 1;
-  if (movieTotalPagesCache.has(filterKey)) {
-    const knownTotal = movieTotalPagesCache.get(filterKey) || 1;
-    const maxPage = Math.min(knownTotal, 20);
-    selectedPage = Math.floor(Math.random() * maxPage) + 1;
-  } else {
-    selectedPage = 1;
-  }
+  const selectedPage = requestedPage;
 
   // Randomly pick sort_by from [popularity.desc, vote_average.desc, revenue.desc, primary_release_date.desc]
   const sortOptions = ['popularity.desc', 'vote_average.desc', 'revenue.desc', 'primary_release_date.desc'];
@@ -345,8 +354,7 @@ app.get('/api/movies', async (req: Request, res: Response) => {
 
     // Exclude seen IDs, then shuffle before enriching top 8
     const nonExcluded = filteredMovies.filter((m) => !excludeIds.has(String(m.id)));
-    const pool = nonExcluded.length > 0 ? nonExcluded : filteredMovies;
-    const candidates = shuffle(pool).slice(0, 8);
+    const candidates = shuffle(nonExcluded).slice(0, 8);
 
     const enrichedMovies = await Promise.all(
       candidates.map(async (movie) => {
@@ -416,6 +424,139 @@ app.get('/api/movies', async (req: Request, res: Response) => {
     });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch movie recommendations' });
+  }
+});
+
+// ============================================================================
+// 2B. TMDB TV RECOMMENDATIONS
+// ============================================================================
+app.get('/api/tv/providers', async (_req: Request, res: Response) => {
+  if (tvProvidersCache && tvProvidersCache.expiresAt > Date.now()) {
+    return res.json({ providers: tvProvidersCache.providers });
+  }
+  const bearer = process.env.TMDB_BEARER_TOKEN;
+  const apiKey = process.env.TMDB_API_KEY;
+  const hasBearer = !!bearer && bearer !== 'your_tmdb_bearer_token_here';
+  const hasApiKey = !!apiKey && apiKey !== 'your_tmdb_api_key_here';
+  if (!hasBearer && !hasApiKey) return res.status(500).json({ error: 'TMDB credentials missing in .env' });
+  const headers: Record<string, string> = { accept: 'application/json' };
+  if (hasBearer) headers.Authorization = `Bearer ${bearer}`;
+  const suffix = hasApiKey && !hasBearer ? `?api_key=${apiKey}` : '';
+  const data = await fetchJson<any>(`https://api.themoviedb.org/3/watch/providers/tv?watch_region=IN${suffix}`, headers);
+  if (!data?.results) return res.status(503).json({ error: 'TMDB provider service unavailable' });
+  const preferred = ['Netflix', 'Amazon Prime Video', 'JioHotstar', 'Disney+ Hotstar', 'SonyLIV', 'ZEE5', 'Apple TV+', 'MUBI', 'Lionsgate Play', 'aha'];
+  const providers = data.results
+    .filter((provider: any) => preferred.includes(provider.provider_name))
+    .sort((a: any, b: any) => preferred.indexOf(a.provider_name) - preferred.indexOf(b.provider_name))
+    .slice(0, 10)
+    .map(({ provider_id, provider_name, logo_path }: any) => ({ id: provider_id, name: provider_name, logo_path }));
+  tvProvidersCache = { expiresAt: Date.now() + 6 * 60 * 60 * 1000, providers };
+  res.json({ providers });
+});
+
+app.get('/api/tv', async (req: Request, res: Response) => {
+  const genreId = String(req.query.genreId || '18');
+  const age = Number(req.query.age || 18);
+  const language = String(req.query.language || 'English');
+  const mode = String(req.query.mode || 'popular');
+  const provider = String(req.query.provider || '');
+  const requestedPage = Math.max(1, Number.parseInt(String(req.query.page || '1'), 10) || 1);
+  const excludeIds = parseExcludeIds(req.query.excludeIds);
+  const bearer = process.env.TMDB_BEARER_TOKEN;
+  const apiKey = process.env.TMDB_API_KEY;
+  const omdbKey = process.env.OMDB_API_KEY;
+  const hasBearer = !!bearer && bearer !== 'your_tmdb_bearer_token_here';
+  const hasApiKey = !!apiKey && apiKey !== 'your_tmdb_api_key_here';
+  const hasOmdbKey = !!omdbKey && omdbKey !== 'your_omdb_api_key_here';
+  if (!hasBearer && !hasApiKey) return res.status(500).json({ error: 'TMDB credentials missing in .env' });
+
+  const langCode = LANGUAGE_CODES[language] || 'en';
+  const headers: Record<string, string> = { accept: 'application/json' };
+  if (hasBearer) headers.Authorization = `Bearer ${bearer}`;
+  const authSuffix = hasApiKey && !hasBearer ? `?api_key=${apiKey}` : '';
+  const today = new Date();
+  const dateString = (date: Date) => date.toISOString().slice(0, 10);
+  const params = new URLSearchParams({
+    with_original_language: langCode,
+    include_adult: 'false',
+    sort_by: mode === 'top' ? 'vote_average.desc' : 'popularity.desc',
+    'vote_count.gte': mode === 'top' ? (['ta', 'te', 'kn', 'ml'].includes(langCode) ? '20' : '200') : (['ta', 'te', 'kn', 'ml'].includes(langCode) ? '20' : '50'),
+    page: String(requestedPage)
+  });
+  if (age <= 10) params.set('with_genres', '10762|10751');
+  else if (genreId) params.set('with_genres', genreId);
+  if (provider) {
+    params.set('with_watch_providers', provider);
+    params.set('watch_region', 'IN');
+  }
+  if (mode === 'airing') {
+    const week = new Date(today);
+    week.setDate(week.getDate() + 7);
+    params.set('air_date.gte', dateString(today));
+    params.set('air_date.lte', dateString(week));
+  } else if (mode === 'new') {
+    const since = new Date(today);
+    since.setDate(since.getDate() - 60);
+    params.set('first_air_date.gte', dateString(since));
+  }
+  if (requestedPage === 1) {
+    const key = `${genreId}:${age}:${language}:${mode}:${provider}`;
+    const cachedPages = movieTotalPagesCache.get(`tv:${key}`);
+    if (cachedPages && cachedPages > 1) params.set('page', String(Math.floor(Math.random() * Math.min(cachedPages, 20)) + 1));
+  }
+
+  try {
+    const discover = await fetchJson<any>(`https://api.themoviedb.org/3/discover/tv?${params.toString()}${authSuffix ? `&api_key=${apiKey}` : ''}`, headers);
+    if (!discover?.results) return res.status(503).json({ error: 'TMDB TV service unavailable' });
+    movieTotalPagesCache.set(`tv:${genreId}:${age}:${language}:${mode}:${provider}`, discover.total_pages || 1);
+    const candidates = shuffle((discover.results || []).filter((show: any) => !excludeIds.has(String(show.id)))).slice(0, 16);
+    const contentResults = await Promise.all(candidates.map(async (show: any) => {
+      const ratings = await fetchJson<any>(`https://api.themoviedb.org/3/tv/${show.id}/content_ratings${authSuffix}`, headers);
+      const usRating = ratings?.results?.find((r: any) => r.iso_3166_1 === 'US')?.rating;
+      const inRating = ratings?.results?.find((r: any) => r.iso_3166_1 === 'IN')?.rating;
+      const rating = usRating || inRating || '';
+      const allowed = age <= 6 ? ['TV-Y', 'TV-G']
+        : age <= 12 ? ['TV-Y', 'TV-G', 'TV-Y7', 'TV-PG']
+        : age <= 16 ? ['TV-Y', 'TV-G', 'TV-Y7', 'TV-PG', 'TV-14']
+        : ['TV-Y', 'TV-G', 'TV-Y7', 'TV-PG', 'TV-14', 'TV-MA'];
+      if (!rating && age < 13) return null;
+      if (rating && !allowed.includes(rating)) return null;
+      return { show, rating: rating || 'Not Rated' };
+    }));
+    const selected = contentResults.filter(Boolean).slice(0, 8) as Array<{ show: any; rating: string }>;
+    const enrichedTv = await Promise.all(selected.map(async ({ show, rating }) => {
+      const [details, externalIds, providerData] = await Promise.all([
+        fetchJson<any>(`https://api.themoviedb.org/3/tv/${show.id}${authSuffix}`, headers),
+        fetchJson<any>(`https://api.themoviedb.org/3/tv/${show.id}/external_ids${authSuffix}`, headers),
+        fetchJson<any>(`https://api.themoviedb.org/3/tv/${show.id}/watch/providers${authSuffix}`, headers)
+      ]);
+      const region = providerData?.results?.IN || providerData?.results?.US || {};
+      const providers = [...(region.flatrate || []), ...(region.free || [])].slice(0, 5);
+      let omdb: any = null;
+      if (externalIds?.imdb_id && hasOmdbKey) {
+        const omdbJson = await fetchJson<any>(`https://www.omdbapi.com/?i=${externalIds.imdb_id}&apikey=${omdbKey}&plot=full`);
+        if (omdbJson?.Response === 'True') omdb = {
+          imdb_rating: omdbJson.imdbRating || 'N/A', awards: omdbJson.Awards || 'N/A',
+          actors: omdbJson.Actors || 'N/A', plot: omdbJson.Plot || 'N/A'
+        };
+      }
+      return {
+        id: show.id, name: details?.name || show.name, original_name: details?.original_name || show.original_name,
+        overview: details?.overview || show.overview || '',
+        poster_url: (details?.poster_path || show.poster_path) ? `https://image.tmdb.org/t/p/w500${details?.poster_path || show.poster_path}` : null,
+        vote_average: details?.vote_average ?? show.vote_average ?? 0, first_air_date: details?.first_air_date || show.first_air_date || '',
+        status: details?.status || 'Unknown', seasons: details?.number_of_seasons ?? null,
+        episodes: details?.number_of_episodes ?? null, runtime: details?.episode_run_time?.[0] ?? null,
+        networks: (details?.networks || []).map((network: any) => network.name), age_rating: rating,
+        genre_names: (details?.genres || []).map((genre: any) => genre.name), providers, omdb
+      };
+    }));
+    const tv = provider
+      ? enrichedTv.filter((show: any) => show.providers.some((item: any) => String(item.provider_id) === provider))
+      : enrichedTv;
+    res.json({ tv });
+  } catch {
+    res.status(500).json({ error: 'Failed to fetch TV recommendations' });
   }
 });
 
@@ -497,6 +638,7 @@ app.get('/api/anime', async (req: Request, res: Response) => {
   const rating = String(req.query.rating || 'pg13').toLowerCase();
   const season = String(req.query.season || 'winter').toUpperCase();
   const year = parseInt(String(req.query.year || new Date().getFullYear()), 10);
+  const requestedPage = Math.max(1, Number.parseInt(String(req.query.page || '1'), 10) || 1);
   const excludeIds = parseExcludeIds(req.query.excludeIds || req.body?.excludeIds);
 
   const filterKey = `${mode}:${genres}:${rating}:${season}:${year}`;
@@ -514,7 +656,7 @@ app.get('/api/anime', async (req: Request, res: Response) => {
 
   if (mode === 'top') {
     // Top mode: random page 1..5, sort: SCORE_DESC
-    variables.page = Math.floor(Math.random() * 5) + 1;
+    variables.page = requestedPage;
     variables.sort = ['SCORE_DESC'];
   } else {
     // Genre / seasonal modes:
@@ -526,7 +668,7 @@ app.get('/api/anime', async (req: Request, res: Response) => {
     if (animeLastPageCache.has(filterKey)) {
       const lastPage = animeLastPageCache.get(filterKey) || 1;
       const maxPage = Math.min(lastPage, 10);
-      variables.page = Math.floor(Math.random() * maxPage) + 1;
+      variables.page = requestedPage;
     } else {
       variables.page = 1;
     }
@@ -582,6 +724,7 @@ app.get('/api/games', async (req: Request, res: Response) => {
   const genre = String(req.query.genre || '');
   const age = Number(req.query.age || 18);
   const mode = String(req.query.mode || 'recommended');
+  const requestedPage = Math.max(1, Number.parseInt(String(req.query.page || '1'), 10) || 1);
   const excludeIds = parseExcludeIds(req.query.excludeIds || req.body?.excludeIds);
 
   const rawgApiKey = process.env.RAWG_API_KEY;
@@ -590,13 +733,12 @@ app.get('/api/games', async (req: Request, res: Response) => {
   }
 
   // Random ordering from [-rating, -added, -metacritic, -released], random page 1..10
-  const randomPage = Math.floor(Math.random() * 10) + 1;
   const gameOrderings = ['-rating', '-added', '-metacritic', '-released'];
   const randomOrdering = gameOrderings[Math.floor(Math.random() * gameOrderings.length)];
 
   const params = new URLSearchParams({
     key: rawgApiKey,
-    page: String(randomPage),
+    page: String(requestedPage),
     page_size: '40',
     ordering: randomOrdering
   });
@@ -651,8 +793,7 @@ app.get('/api/games', async (req: Request, res: Response) => {
 
     // Shuffle and exclude seen IDs
     const nonExcluded = filtered.filter((game: any) => !excludeIds.has(String(game.id)));
-    const pool = nonExcluded.length > 0 ? nonExcluded : filtered;
-    const shuffled = shuffle(pool);
+    const shuffled = shuffle(nonExcluded);
 
     const games = shuffled.slice(0, 12).map((g: any) => ({
       id: g.id,
@@ -675,10 +816,11 @@ app.get('/api/games', async (req: Request, res: Response) => {
 // ============================================================================
 // 5. AI-ENHANCED ENGINE ENDPOINT (Gemini Flash + Tavily Context)
 // ============================================================================
-const VALID_TARGETS = ['videos', 'music', 'movies', 'anime', 'games'] as const;
+const VALID_TARGETS = ['videos', 'music', 'movies', 'tv', 'anime', 'games'] as const;
 const VALID_MOODS = ['Happy', 'Sad', 'Energetic', 'Relaxed', 'Stressed', 'Bored', 'Adventurous'] as const;
 const VALID_LANGUAGES = ['English', 'Tamil', 'Hindi', 'Telugu', 'Malayalam', 'Kannada'] as const;
 const VALID_MOVIE_GENRES = ['28', '35', '18', '10751', '27', '10749', '878', '16'] as const;
+const VALID_TV_GENRES = ['10759', '35', '80', '18', '10751', '10762', '9648', '10765', '99', '10764', '16'] as const;
 const VALID_ANIME_GENRES = ['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Romance', 'Sci-Fi', 'Mystery'] as const;
 const VALID_GAME_GENRES = ['action', 'adventure', 'role-playing-games-rpg', 'shooter', 'puzzle', 'racing', 'sports', 'strategy', 'indie'] as const;
 const VALID_GAME_PLATFORMS = ['4', '187', '18', '186', '7', '21', '3'] as const;
@@ -757,11 +899,12 @@ You MUST output ONLY a valid, raw JSON object (no markdown formatting, no code f
 
 JSON Schema:
 {
-  "target": "videos" | "music" | "movies" | "anime" | "games",
+  "target": "videos" | "music" | "movies" | "tv" | "anime" | "games",
   "mood": "Happy" | "Sad" | "Energetic" | "Relaxed" | "Stressed" | "Bored" | "Adventurous",
   "language": "English" | "Tamil" | "Hindi" | "Telugu" | "Malayalam" | "Kannada",
   "age": number | null,
   "movieGenreId": "28" | "35" | "18" | "10751" | "27" | "10749" | "878" | "16" | null,
+  "tvGenreId": "10759" | "35" | "80" | "18" | "10751" | "10762" | "9648" | "10765" | "99" | "10764" | "16" | null,
   "animeGenre": "Action" | "Adventure" | "Comedy" | "Drama" | "Fantasy" | "Romance" | "Sci-Fi" | "Mystery" | null,
   "gameGenre": "action" | "adventure" | "role-playing-games-rpg" | "shooter" | "puzzle" | "racing" | "sports" | "strategy" | "indie" | null,
   "gamePlatform": "4" | "187" | "18" | "186" | "7" | "21" | "3" | null,
@@ -772,6 +915,7 @@ Dropdown & ID Reference Rules:
 - "target":
   - Music / songs / tracks / audio -> "music"
   - Movies / films / cinema / cartoons -> "movies"
+  - TV shows / web series / television / binge-worthy series -> "tv"
   - Anime / Japanese animation -> "anime"
   - Video games / console / PC -> "games"
   - Videos / clips / comedy / shorts / youtube -> "videos"
@@ -780,6 +924,7 @@ Dropdown & ID Reference Rules:
 - "language": Must be one of: English, Tamil, Hindi, Telugu, Malayalam, Kannada. If not specified, infer from taste profile or default to English.
 - "age": Set to integer if mentioned (e.g. "I'm 10" -> 10), else null.
 - "movieGenreId": TMDB IDs: 28=Action, 35=Comedy, 18=Drama, 10751=Family, 27=Horror, 10749=Romance, 878=Science Fiction, 16=Animation. (fun cartoon -> 16).
+  - "tvGenreId": TMDB TV IDs: 10759=Action & Adventure, 35=Comedy, 80=Crime, 18=Drama, 10751=Family, 10762=Kids, 9648=Mystery, 10765=Sci-Fi & Fantasy, 99=Documentary, 10764=Reality, 16=Animation.
 - "animeGenre": Action, Adventure, Comedy, Drama, Fantasy, Romance, Sci-Fi, Mystery.
 - "gameGenre": action, adventure, role-playing-games-rpg, shooter, puzzle, racing, sports, strategy, indie.
 - "gamePlatform": 4=PC, 187=PS5, 18=PS4, 186=Xbox Series, 7=Nintendo Switch, 21=Android, 3=iOS.
@@ -834,6 +979,11 @@ ${tavilyContext ? `Latest News & Trending Context:\n${tavilyContext}` : ''}`;
       movieGenreId = String(parsed.movieGenreId);
     }
 
+    let tvGenreId: string | null = null;
+    if (parsed.tvGenreId != null && VALID_TV_GENRES.includes(String(parsed.tvGenreId) as any)) {
+      tvGenreId = String(parsed.tvGenreId);
+    }
+
     let animeGenre: string | null = null;
     if (parsed.animeGenre && VALID_ANIME_GENRES.includes(parsed.animeGenre)) {
       animeGenre = parsed.animeGenre;
@@ -859,6 +1009,7 @@ ${tavilyContext ? `Latest News & Trending Context:\n${tavilyContext}` : ''}`;
       language,
       age,
       movieGenreId,
+      tvGenreId,
       animeGenre,
       gameGenre,
       gamePlatform,

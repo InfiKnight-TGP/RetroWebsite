@@ -1,4 +1,4 @@
-# 🕹️ R.E.T.R.O. v2.0 | Entertainment Recommender
+# 👾 R.E.T.R.O. v2.0 | Entertainment Recommender
 
 > **Recommendation Engine for Tailored Recreation & Online-content**
 

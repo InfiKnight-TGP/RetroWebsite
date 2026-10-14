@@ -1,31 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🕹️ R.E.T.R.O. | Entertainment Recommender</title>
+  <title>👾 R.E.T.R.O. v2.0 | Entertainment Recommender</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
-  <!-- Subtle CRT Scanline Overlay -->
+<body class="crt-enabled">
+  <!-- Subtle CRT Scanline & Vignette Overlay -->
   <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
 
   <!-- Top Arcade Header & Navigation -->
   <header class="retro-header">
-    <div class="brand">
-      <span class="arcade-badge">INSERT COIN</span>
-      <h1>🕹️ R.E.T.R.O.</h1>
-      <p>Recommendation Engine for Tailored Recreation & Online-content</p>
+    <div class="header-top-bar">
+      <div class="arcade-status">
+        <span class="status-dot"></span>
+        <span>SYS.ONLINE // 60FPS</span>
+      </div>
+      <span class="arcade-badge blink-pulse">🪙 INSERT COIN // 1UP</span>
+      <div class="header-toggles">
+        <button id="sfx-toggle-btn" class="crt-toggle" title="Toggle 8-Bit Arcade Audio">🔊 SFX: ON</button>
+        <button id="crt-toggle-btn" class="crt-toggle" title="Toggle CRT Scanlines">📺 CRT FX: ON</button>
+      </div>
     </div>
 
-    <nav class="retro-nav" id="main-nav">
+    <div class="brand">
+      <h1><span class="brand-icon">👾</span> R.E.T.R.O.</h1>
+      <p>Recommendation Engine for Tailored Recreation &amp; Online-content</p>
+    </div>
+
+    <nav class="retro-nav" id="main-nav" aria-label="Main Navigation">
       <button class="nav-btn active" data-view="home">🏠 HOME</button>
       <button class="nav-btn" data-view="videos">📺 YT VIDEOS</button>
       <button class="nav-btn" data-view="music">🎵 YT MUSIC</button>
       <button class="nav-btn" data-view="movies">🎬 MOVIES</button>
+      <button class="nav-btn" data-view="tv">📺 TV SHOWS</button>
       <button class="nav-btn" data-view="anime">⛩️ ANIME</button>
       <button class="nav-btn" data-view="games">🎮 GAMES</button>
     </nav>
@@ -33,21 +47,29 @@
 
   <!-- Main Workspace -->
   <main class="container">
-    <!-- Global Preferences Bar (Shown on Video, Music, and Movie Views) -->
+    <!-- Global Preferences Bar (Shown on Video, Music, Movie, Anime, and Game Views) -->
     <section id="preferences-panel" class="retro-panel hidden">
       <div class="panel-header">
-        <h2>⚡ PLAYER PREFERENCES</h2>
-        <div style="display:flex; gap: 0.5rem; flex-wrap: wrap;">
-          <button id="clear-profile-btn" class="btn-secondary" style="font-size: 0.72rem; padding: 0.5rem 0.8rem;">🧠 CLEAR TASTE PROFILE</button>
-          <button id="reset-btn" class="btn-secondary" style="font-size: 0.72rem; padding: 0.5rem 0.8rem;">↺ RESET MEMORY</button>
+        <div class="panel-title-wrap">
+          <span class="led-indicator"></span>
+          <h2>⚡ PLAYER PREFERENCES</h2>
+        </div>
+        <div class="panel-actions">
+          <button id="clear-profile-btn" class="btn-secondary btn-sm">🧠 CLEAR TASTE PROFILE</button>
+          <button id="reset-btn" class="btn-secondary btn-sm">↺ RESET MEMORY</button>
         </div>
       </div>
 
-      <!-- Small ASK R.E.T.R.O. on every tab -->
+      <!-- Compact ASK R.E.T.R.O. AI Bar on every tab -->
       <div class="ai-compact-bar">
         <span class="ai-badge">🤖 ASK R.E.T.R.O.</span>
-        <input type="text" id="tab-ai-prompt" class="retro-input ai-input" placeholder="Tell me how you feel or what you want... (e.g. chill Tamil songs)" />
-        <button id="tab-ai-submit-btn" class="btn-primary" style="font-size: 0.72rem; padding: 0.55rem 1rem;">ASK AI</button>
+        <input
+          type="text"
+          id="tab-ai-prompt"
+          class="retro-input ai-input"
+          placeholder="Tell me how you feel or what you want... (e.g. chill Tamil melody songs or sci-fi thriller)"
+        />
+        <button id="tab-ai-submit-btn" class="btn-primary btn-sm">ASK AI ⚡</button>
       </div>
 
       <div class="pref-grid">
@@ -79,11 +101,29 @@
           </select>
         </div>
 
+        <div class="control-group hidden" id="tv-genre-group">
+          <label for="tv-genre">TV GENRE</label>
+          <select id="tv-genre" class="retro-input">
+            <option value="">Any Genre</option><option value="10759">Action &amp; Adventure</option><option value="35">Comedy</option>
+            <option value="80">Crime</option><option value="18" selected>Drama</option>
+            <option value="10751">Family</option><option value="10762">Kids</option>
+            <option value="9648">Mystery</option><option value="10765">Sci-Fi &amp; Fantasy</option>
+            <option value="99">Documentary</option><option value="10764">Reality</option><option value="16">Animation</option>
+          </select>
+        </div>
+        <div class="control-group hidden" id="tv-mode-group">
+          <label for="tv-mode">DISCOVERY MODE</label>
+          <select id="tv-mode" class="retro-input">
+            <option value="popular">Popular</option><option value="top">Top Rated</option>
+            <option value="airing">Airing Now</option><option value="new">New Releases</option>
+          </select>
+        </div>
+
         <!-- Slot 2: Anime Controls -->
         <div class="control-group hidden" id="anime-mode-group">
           <label for="anime-mode">DISCOVERY MODE</label>
           <select id="anime-mode" class="retro-input">
-            <option value="genre">🎯 Genre & Rating Based</option>
+            <option value="genre">🎯 Genre &amp; Rating Based</option>
             <option value="seasonal">🌸 Seasonal Anime</option>
             <option value="top">🏆 Top Ranked Anime</option>
           </select>
@@ -125,7 +165,7 @@
 
         <div class="control-group hidden" id="anime-year-group">
           <label for="anime-year">SEASON YEAR</label>
-          <input type="number" id="anime-year" class="retro-input" min="1970" max="2035" value="2025" />
+          <input type="number" id="anime-year" class="retro-input" min="1970" max="2035" value="2026" />
         </div>
 
         <!-- Slot 3: Game Controls -->
@@ -147,7 +187,7 @@
             <option value="186">🟢 Xbox Series S/X</option>
             <option value="7">🔴 Nintendo Switch</option>
             <option value="21">📱 Android</option>
-            <option value="3">🍏 iOS</option>
+            <option value="3">🍎 iOS</option>
           </select>
         </div>
 
@@ -170,10 +210,19 @@
         <!-- Common: Player Age Slider (Videos, Music, Movies, Games) -->
         <div class="control-group" id="age-group">
           <label for="age-slider">
-            PLAYER AGE: <span id="age-value" class="neon-text">18</span>
+            <span>PLAYER AGE: <strong id="age-value" class="neon-text">18</strong></span>
             <span id="age-badge" class="badge">TEENS</span>
           </label>
-          <input type="range" id="age-slider" min="1" max="100" value="18" class="retro-slider" />
+          <div class="slider-wrap">
+            <input type="range" id="age-slider" min="1" max="100" value="18" class="retro-slider" />
+            <div class="slider-ticks">
+              <span>1</span>
+              <span>12</span>
+              <span>19</span>
+              <span>50</span>
+              <span>100</span>
+            </div>
+          </div>
         </div>
 
         <!-- Common: Audio / Subtitle Language (Videos, Music, Movies) -->
@@ -192,7 +241,7 @@
 
       <div class="action-row">
         <button id="fetch-action-btn" class="btn-primary">🚀 GENERATE RECOMMENDATION</button>
-        <button id="surprise-btn" class="btn-secondary" style="font-family: var(--font-pixel); font-size: 0.8rem; padding: 0.95rem 1.4rem;">🎲 SURPRISE ME</button>
+        <button id="surprise-btn" class="btn-surprise">🎲 SURPRISE ME</button>
       </div>
     </section>
 
@@ -201,7 +250,11 @@
   </main>
 
   <footer class="retro-footer">
-    <p>R.E.T.R.O. SYSTEM v2.0 // POWERED BY TYPESCRIPT, HTML5 & CSS3</p>
+    <div class="footer-inner">
+      <span>R.E.T.R.O. SYSTEM v2.0 // SYNTHWAVE ARCADE OS</span>
+      <span class="footer-sep">•</span>
+      <span>POWERED BY TYPESCRIPT, GEMINI FLASH &amp; EXPRESS</span>
+    </div>
   </footer>
 
   <script src="/dist/app.js"></script>
