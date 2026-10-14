@@ -1,110 +1,146 @@
-# R.E.T.R.O - Entertainment Recommender
+# 🕹️ R.E.T.R.O. v2.0 | Entertainment Recommender
 
-A personalized content recommendation system that suggests entertainment options based on users' emotional state, age, and language preferences. The system currently focuses on YouTube content, movies, and music with plans for expansion to other platforms.
+> **Recommendation Engine for Tailored Recreation & Online-content**
 
-## Features
+A personalized entertainment recommendation system built with **HTML5, CSS3, TypeScript, and Node.js (Express)**. R.E.T.R.O. curates content across YouTube videos, music, cinema, and anime based on your emotional state, age, and preferred language — all styled in an immersive Retro Arcade / CRT aesthetic.
 
-- **Mood-Based Recommendations**: Content suggestions based on 7 emotional states
-- **Multi-language Support**: Content delivery in 8 languages
-- **Age-Appropriate Content**: Customized content for different age groups
-- **Clean UI**: Intuitive Streamlit-based interface
-- **YouTube Integration**: Video search and filtering with embedded player
-- **Movie Recommendations**: Personalized movie suggestions with detailed information
-- **Music Recommendations**: Mood-based music playlist suggestions
+---
 
-## Prerequisites
+## 🎯 Active Modules
 
-- Python 3.8 or higher
-- YouTube Data API v3 key
-- TMDB API key and Bearer token
-- OMDB API key
+- **📺 Video Discovery**: Mood-based YouTube search with a smart 5-topic rotation engine, age filtering, 6 Indian & global languages, and offline fallback databases.
+- **🎵 Music Synthesizer**: Mood & language-matched music recommendations categorized through YouTube Music, featuring embedded playback decks.
+- **🎬 Cinema Archive**: Dual TMDB + OMDb API engine featuring US & Indian regional certifications, streaming provider logos (Netflix, Prime, Sun Nxt, etc.), IMDb scores, Metascores, runtime, director, cast, and zero-repeat session batching.
+- **⛩️ Anime Archive**: Multi-mode anime explorer featuring Genre & Content Rating filtering, Seasonal time-machine (winter/spring/summer/fall + year), and Top Ranked leaderboard.
+- **🎮 Game Recommenders**: RAWG API integration with Recommended (top-rated & Metacritic 70-100) and Upcoming Releases modes (next 6 months), platform selection, genre filters, and server-side ESRB age rating filtering.
 
-## Setup
+---
 
-1. Clone the repository:
+## 🛠️ Technology Stack
+
+- **Frontend**: Vanilla HTML5, TypeScript, Custom CRT & Neon CSS3 (scanlines, pixel fonts, responsive grid)
+- **Bundler**: [esbuild](https://esbuild.github.io/) (ultra-fast client TS bundle generation)
+- **Backend**: [Node.js](https://nodejs.org/) & [Express](https://expressjs.com/) with TypeScript
+- **Runtime / Watcher**: [tsx](https://github.com/privatenumber/tsx) for zero-config TypeScript execution and hot reloading
+- **APIs**:
+  - [YouTube Data API v3](https://developers.google.com/youtube/v3)
+  - [TMDB API](https://developer.themoviedb.org/docs)
+  - [OMDb API](https://www.omdbapi.com/)
+  - [RAWG Video Games Database API](https://rawg.io/apidocs)
+  - [AniList GraphQL API](https://anilist.gitbook.io/anilist-apiv2-docs/)
+
+---
+
+## 📋 Prerequisites
+
+- **Node.js** (v18.0.0 or higher; Node 20+ recommended)
+- **npm** (v9.0.0 or higher)
+- API Keys:
+  - **YouTube Data API v3 Key**
+  - **TMDB API Key** and/or **TMDB Bearer Token**
+  - **OMDb API Key**
+  - **RAWG API Key**
+
+---
+
+## 🚀 Setup & Installation
+
+### 1. Clone Repository & Navigate
+
 ```bash
 git clone <repository-url>
-cd mood-entertainment-recommender
+cd RetroWebsite
 ```
 
-2. Create and activate a virtual environment:
+### 2. Install Dependencies
+
 ```bash
-python -m venv .venv
-# On Windows
-.venv\Scripts\activate
-# On Unix or MacOS
-source .venv/bin/activate
+npm install
 ```
 
-3. Install dependencies:
+### 3. Configure Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+PORT=3000
+YOUTUBE_API_KEY=your_youtube_api_key_here
+TMDB_API_KEY=your_tmdb_api_key_here
+TMDB_BEARER_TOKEN=your_tmdb_bearer_token_here
+OMDB_API_KEY=your_omdb_api_key_here
+RAWG_API_KEY=your_rawg_api_key_here
+```
+
+> [!SECURITY NOTE]
+> Never commit your `.env` file to version control. The repository's `.gitignore` automatically excludes `.env` and `node_modules`.
+
+### 4. Build Client & Start Development Server
+
 ```bash
-pip install -r requirements.txt
+npm run dev
 ```
 
-4. Set up environment variables:
-   - Copy `.env.example` to `.env`
-   - Fill in your API keys in the `.env` file:
-     ```
-     YOUTUBE_API_KEY=your_youtube_api_key_here
-     TMDB_API_KEY=your_tmdb_api_key_here
-     TMDB_BEARER_TOKEN=your_tmdb_bearer_token_here
-     OMDB_API_KEY=your_omdb_api_key_here
-     ```
-   - Never commit your `.env` file to version control
+The app will compile the client TypeScript bundle to `public/dist/app.js` and launch the server at:
+**[http://localhost:3000](http://localhost:3000)**
 
-5. Run the application:
-```bash
-streamlit run Home.py
+---
+
+## 📜 Available Scripts
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Bundles frontend with esbuild and starts backend with `tsx watch` for auto-reloading |
+| `npm run build:client` | Bundles `src/client/app.ts` into `public/dist/app.js` using esbuild |
+| `npm start` | Bundles frontend and starts backend in standard production mode |
+
+---
+
+## 📂 Project Structure
+
+```text
+RetroWebsite/
+├── .env                          # Local API keys (never commit!)
+├── .gitignore                    # Git exclusions (.env, node_modules, public/dist)
+├── package.json                  # Dependencies & npm scripts
+├── tsconfig.json                 # TypeScript compiler configuration
+├── README.md                     # Documentation
+├── data/                         # Predefined fallback databases & search queries
+│   ├── music_fallback_videos.json
+│   ├── music_queries.json
+│   ├── search_queries.json
+│   └── video_fallback_videos.json
+├── public/                       # Static web assets served by Express
+│   ├── dist/
+│   │   └── app.js                # Compiled frontend JavaScript bundle
+│   ├── index.html                # Retro Arcade SPA shell
+│   └── styles.css                # CRT scanline overlay, neon glows & pixel UI
+└── src/
+    ├── client/
+    │   └── app.ts                # Client-side UI controller, state & event logic
+    └── server.ts                 # Express API server (YouTube, TMDB, OMDb, Anime)
 ```
 
-## Project Structure
+---
 
-- `Home.py`: Main Streamlit application entry point
-- `pages/`: Directory containing different pages of the application
-  - `YouTube_Videos.py`: YouTube video recommendations
-  - `YouTube_Music.py`: Music playlist recommendations
-  - `Movie_Recommendations.py`: Movie recommendations
-- `search_queries.json`: Predefined search queries for different moods and age groups
-- `music_queries.json`: Predefined music search queries
-- `video_fallback_videos.json`: Fallback videos for different moods
-- `music_fallback_videos.json`: Fallback music videos
-- `requirements.txt`: Project dependencies
-- `.env`: Environment variables (create this file)
-- `.env.example`: Example environment variables template
+## 🎮 How to Use
 
-## Security Notes
+1. **Select View**: Use the top navigation bar to choose between **Home**, **YT Videos**, **YT Music**, **Movies**, and **Anime**.
+2. **Set Preferences**:
+   - **Videos & Music**: Select your current **Emotional State (Mood)**, adjust the **Age Slider** (`KIDS`, `TEENS`, `ADULTS`), and choose your preferred language.
+   - **Movies**: Select a **Genre**, **Player Age**, and **Audio / Subtitle Language**. Click **Generate** to retrieve enriched movie cards with streaming providers and IMDb ratings. Click again to cycle through movies in the current batch.
+   - **Anime**: Switch between **Genre & Rating**, **Seasonal Anime** (choose season and year), or **Top Ranked**.
+3. **Reset Memory**: Click **↺ RESET MEMORY** at any time to clear cached topic iterations and queued results.
 
-- Never commit API keys or sensitive credentials to version control
-- Keep your `.env` file secure and never share it publicly
-- If you accidentally commit sensitive information, immediately:
-  1. Revoke the exposed credentials
-  2. Generate new credentials
-  3. Update your local `.env` file
-  4. Force push the changes to remove sensitive data from git history
+---
 
-## Usage
+## 🔒 Security & Best Practices
 
-1. Select your current mood from the sidebar
-2. Choose your age group
-3. Select your preferred language
-4. Browse through the recommended content
-5. Click on videos to watch them directly in the app
+- All API requests to external services (YouTube, TMDB, OMDb) originate server-side to keep secrets hidden from the browser.
+- External API calls use secure HTTPS endpoints.
+- If TMDB credentials are missing or invalid, friendly retro terminal notices are rendered without crashing the UI.
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 📄 License
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Streamlit](https://streamlit.io/) for the amazing web framework
-- [YouTube Data API](https://developers.google.com/youtube/v3) for video content
-- [TMDB API](https://www.themoviedb.org/documentation/api) for movie data
-- [OMDB API](http://www.omdbapi.com/) for additional movie information 
+This project is open-source under the [MIT License](LICENSE).
