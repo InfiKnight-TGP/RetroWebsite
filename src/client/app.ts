@@ -14,6 +14,30 @@ interface FeedbackItem {
   timestamp: number;
 }
 
+const AI_SUGGESTIONS = [
+  { icon: '🎧', label: 'Chill Tamil Music', prompt: 'Relaxing Tamil melody songs after a long day' },
+  { icon: '🎵', label: 'Upbeat Hindi Songs', prompt: 'Upbeat Hindi songs for a morning workout' },
+  { icon: '🎬', label: 'Sci-Fi Action Movie', prompt: 'A high-octane science fiction action movie for tonight' },
+  { icon: '🍿', label: 'Feel-Good Comedy', prompt: 'A feel-good comedy movie to watch with family' },
+  { icon: '⛩️', label: 'Dark Fantasy Anime', prompt: 'Top-rated dark fantasy anime with great action' },
+  { icon: '🌸', label: 'Cozy Anime', prompt: 'A cozy, funny slice-of-life anime' },
+  { icon: '🎮', label: 'PC Action RPG', prompt: 'The best PC action RPG to play this weekend' },
+  { icon: '🕹️', label: 'Co-op Game', prompt: 'A fun co-op adventure game for two players' },
+  { icon: '📺', label: 'Crime Thriller Series', prompt: 'A binge-worthy crime thriller TV series' },
+  { icon: '🔍', label: 'Mystery Series', prompt: 'A gripping mystery TV series with plot twists' },
+  { icon: '▶️', label: 'Science Videos', prompt: 'Fascinating YouTube videos explaining space and science' },
+  { icon: '😂', label: 'Comedy Clips', prompt: 'Funny stand-up comedy clips on YouTube' },
+];
+
+function getRandomAiSuggestions() {
+  const shuffled = [...AI_SUGGESTIONS];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, 4);
+}
+
 const state = {
   currentView: "home" as ViewType,
   videoIterations: {} as Record<string, number>,
@@ -887,10 +911,9 @@ function renderHomeView() {
       </div>
       <div class="ai-chips-row">
         <span class="ai-chip-label">TRY:</span>
-        <button class="ai-chip" data-prompt="Relaxing Tamil melody songs after a long day">🎧 Chill Tamil Music</button>
-        <button class="ai-chip" data-prompt="High-octane sci-fi or action movie to watch tonight">🎬 Sci-Fi / Action Movie</button>
-        <button class="ai-chip" data-prompt="Top-rated dark fantasy or action anime">⛩️ Dark Fantasy Anime</button>
-        <button class="ai-chip" data-prompt="Best PC action RPG games to play this weekend">🎮 PC Action RPG</button>
+        ${getRandomAiSuggestions().map((suggestion) => `
+          <button class="ai-chip" data-prompt="${suggestion.prompt}">${suggestion.icon} ${suggestion.label}</button>
+        `).join('')}
       </div>
     </div>
 
