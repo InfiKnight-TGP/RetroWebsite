@@ -138,9 +138,3 @@ RetroWebsite/
 - All API requests to external services (YouTube, TMDB, OMDb) originate server-side to keep secrets hidden from the browser.
 - External API calls use secure HTTPS endpoints.
 - If TMDB credentials are missing or invalid, friendly retro terminal notices are rendered without crashing the UI.
-
----
-
-## 📄 License
-
-This project is open-source under the [MIT License](LICENSE).
