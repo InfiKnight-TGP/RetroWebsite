@@ -1036,21 +1036,7 @@ function renderHomeView() {
         </div>
       </div>
 
-      <div class="retro-card feature-card" style="border-color: var(--retro-cyan);">
-        <div>
-          <h3 style="color: var(--retro-cyan);"><span>🤖 AI-ENHANCED ENGINE</span></h3>
-          <ul>
-            <li>Gemini Flash natural language parser</li>
-            <li>Smart cross-platform taste profiling</li>
-            <li>Real-time news &amp; trending intelligence</li>
-            <li>Instant tailored "FOR YOU" generator</li>
-          </ul>
-        </div>
-        <div class="card-launch-footer" style="color: var(--retro-cyan);">
-          <span>CORE AI</span>
-          <span>ACTIVE ⚡</span>
-        </div>
-      </div>
+
     </div>
   `;
 
