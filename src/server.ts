@@ -492,8 +492,8 @@ app.get('/api/tv', async (req: Request, res: Response) => {
   if (mode === 'airing') {
     const week = new Date(today);
     week.setDate(week.getDate() + 7);
-    params.set('air_date.gte', dateString(today));
-    params.set('air_date.lte', dateString(week));
+    params.set('first_air_date.gte', dateString(today));
+    params.set('first_air_date.lte', dateString(week));
   } else if (mode === 'new') {
     const since = new Date(today);
     since.setDate(since.getDate() - 60);
@@ -506,7 +506,12 @@ app.get('/api/tv', async (req: Request, res: Response) => {
   }
 
   try {
-    const discover = await fetchJson<any>(`https://api.themoviedb.org/3/discover/tv?${params.toString()}${authSuffix ? `&api_key=${apiKey}` : ''}`, headers);
+    const discoverUrl = `https://api.themoviedb.org/3/discover/tv?${params.toString()}${authSuffix ? `&api_key=${apiKey}` : ''}`;
+    let discover = await fetchJson<any>(discoverUrl, headers);
+    if (!discover?.results) {
+      await new Promise((resolve) => setTimeout(resolve, 750));
+      discover = await fetchJson<any>(discoverUrl, headers);
+    }
     if (!discover?.results) return res.status(503).json({ error: 'TMDB TV service unavailable' });
     movieTotalPagesCache.set(`tv:${genreId}:${age}:${language}:${mode}:${provider}`, discover.total_pages || 1);
     const candidates = shuffle((discover.results || []).filter((show: any) => !excludeIds.has(String(show.id)))).slice(0, 16);
